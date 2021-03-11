@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Sign Up | User registration </title>
+    <title>EmpleosApp | Formulario de registro</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -24,26 +24,20 @@
       <div class="container"> 
 
         <div class="card">
-          <h4 class="card-header"><strong>User Registration</strong></h4>              
+          <h4 class="card-header"><strong>Formulario de registro</strong></h4>              
           <div class="card-body">
-            <form th:action="@{/signup}" th:object="${usuario}" method="post">              
+            <form th:action="@{/signup}" th:object="${user}" method="post">              
               <div class="row">
                 <div class="col-md-3"> 
                   <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" th:field="*{name}" id="name" name="nombre" placeholder="Your Name" required="required">
+                    <label for="nombre">Name</label>
+                    <input type="text" class="form-control" th:field="*{name}" id="name" name="name" placeholder="Your Name" required="required">
                   </div>
                 </div>
                 <div class="col-md-3"> 
                   <div class="form-group">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" class="form-control" th:field="*{lastname}" id="lastname" name="lastnombre" placeholder="Your LastName" required="required">
-                  </div>
-                </div>
-                <div class="col-md-3"> 
-                  <div class="form-group">
-                    <label for="email">email</label>
-                    <input type="email" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Your email" required="required">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Escriba su correo electrónico" required="required">
                   </div> 
                 </div>    
                 <div class="col-md-3"> 

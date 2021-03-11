@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nautilus.account.register.domain.User;
@@ -16,18 +19,16 @@ import com.nautilus.account.register.serviceJPA.UserService;
 
 
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
 	private UserService serviceUser;
     
-   @GetMapping("/user/signup")
-	public String mostrarIndex(Model model) {
-    	List<User> list = serviceUser.findAllUser();
-    	model.addAttribute("user", list);
-		return "user/user-list";
+   @GetMapping("/")
+	public String UserRegistration(Model model) {
+    	return "redirect:/user/formRegistro";
 	}
     
     @GetMapping("/delete/{id}")
@@ -36,6 +37,16 @@ public class UserController {
     	serviceUser.delete(idUsuario);			
 		attributes.addFlashAttribute("msg", "El usuario fue eliminado!.");
 		return "redirect:/user/index";
+	}
+    
+    @PostMapping("/user/signup")
+	public String guardarRegistro(@RequestBody User user ) {
+		
+		serviceUser.saveUser(user);
+				
+		//attributes.addFlashAttribute("msg", "El registro fue guardado correctamente!");
+		
+		return "el registro fue guardado";
 	}
 
 }
